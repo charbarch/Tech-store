@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Sales Transactions Report</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Transaction ID</th>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Transaction Type</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transaction in transactions %}
+    <tr>
+      <td>{{ transaction.transaction_id }}</td>
+      <td>{{ transaction.product_name }}</td>
+      <td>{{ transaction.quantity }}</td>
+      <td>{{ transaction.transaction_type }}</td>
+      <td>{{ transaction.timestamp }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{{ url_for('reports') }}" class="btn btn-secondary mt-3">Back to Reports</a>
+{% endblock %}

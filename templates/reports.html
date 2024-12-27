@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Reports</h1>
+<ul>
+  <li><a href="{{ url_for('low_stock') }}">Low Stock Report</a></li>
+  <li><a href="{{ url_for('total_stock_value') }}">Total Stock Value Report</a></li>
+  <li><a href="{{ url_for('sales_transactions') }}">Sales Transactions Report</a></li>
+  <li><a href="{{ url_for('category_stock') }}">Category-Wise Stock Report</a></li>
+  <!-- Add dynamic stock history links for products -->
+  <h3>Stock Movement by Product</h3>
+  <ul>
+    {% for product in products %}
+      <li><a href="{{ url_for('stock_history', product_id=product.product_id) }}">{{ product.product_name }}</a></li>
+    {% endfor %}
+  </ul>
+</ul>
+{% endblock %}

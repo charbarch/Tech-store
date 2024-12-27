@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Sales Report</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Transaction ID</th>
+      <th>Product Name</th>
+      <th>Quantity Sold</th>
+      <th>Transaction Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for sale in sales_data %}
+    <tr>
+      <td>{{ sale.transaction_id }}</td>
+      <td>{{ sale.product_name }}</td>
+      <td>{{ sale.quantity }}</td>
+      <td>{{ sale.transaction_date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

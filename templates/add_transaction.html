@@ -1,0 +1,39 @@
+<!-- templates/add_transaction.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Add New Transaction</h1>
+
+<form method="POST" action="{{ url_for('add_transaction') }}">
+  <div class="mb-3">
+    <label for="product_id" class="form-label">Select Product</label>
+    <select class="form-select" id="product_id" name="product_id" required>
+      <option value="" disabled selected>-- Choose a product --</option>
+      {% for p in products %}
+        <option value="{{ p.product_id }}">{{ p.product_name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  
+  <div class="mb-3">
+    <label for="transaction_type" class="form-label">Transaction Type</label>
+    <select class="form-select" id="transaction_type" name="transaction_type" required>
+      <option value="IN">IN (Receive from supplier)</option>
+      <option value="OUT">OUT (Sale to customer)</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Quantity</label>
+    <input 
+      type="number" 
+      class="form-control" 
+      id="quantity" 
+      name="quantity" 
+      min="1" 
+      required 
+    >
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add Transaction</button>
+</form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Category-Wise Stock Report</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Total Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+      <tr>
+        <td>{{ row.category_name }}</td>
+        <td>{{ row.total_stock }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

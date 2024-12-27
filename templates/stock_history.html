@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Stock Movement for {{ product.product_name }}</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Transaction ID</th>
+      <th>Type</th>
+      <th>Quantity</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+      <tr>
+        <td>{{ row.transaction_id }}</td>
+        <td>{{ row.transaction_type }}</td>
+        <td>{{ row.quantity }}</td>
+        <td>{{ row.transaction_date }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

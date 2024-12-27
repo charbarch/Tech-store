@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+        background-color: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Align items to the top */
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+    .login-card {
+        width: 100%;
+        max-width: 400px;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-top: 100px; /* Ensures it sits below the navbar */
+    }
+    .login-card h1 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+        color: #343a40;
+    }
+    .form-control {
+        margin-bottom: 20px;
+        border-radius: 5px;
+        height: 45px;
+    }
+    .btn-primary {
+        width: 100%;
+        border-radius: 5px;
+        height: 45px;
+        background-color: #007bff;
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    .text-muted {
+        margin-top: 20px;
+    }
+    .text-muted a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .text-muted a:hover {
+        text-decoration: underline;
+    }
+    footer {
+        position: fixed;
+        bottom: 10px;
+        text-align: center;
+        width: 100%;
+        color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" height="30">
+      My Tech Store
+    </a>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="login-card">
+  <h1>Login</h1>
+  <form method="POST" action="{{ url_for('login') }}">
+    <input 
+      type="text" 
+      class="form-control" 
+      id="username" 
+      name="username" 
+      placeholder="Enter your username" 
+      required
+    >
+    <input 
+      type="password" 
+      class="form-control" 
+      id="password" 
+      name="password" 
+      placeholder="Enter your password" 
+      required
+    >
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <p class="text-muted">
+    Don't have an account? <a href="{{ url_for('register') }}">Register</a>
+  </p>
+</div>
+
+<footer>
+  &copy; 2025 AUST - American University of Science and Technology
+</footer>
+
+<script 
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+</body>
+</html>

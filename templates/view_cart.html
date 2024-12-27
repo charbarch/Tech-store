@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Your Cart</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in cart_items %}
+    <tr>
+      <td>{{ item.product_name }}</td>
+      <td>${{ '%.2f'|format(item.sale_price) }}</td>
+      <td>{{ item.quantity }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>Total: ${{ '%.2f'|format(total_price) }}</h3>
+
+<form method="POST" action="{{ url_for('checkout') }}">
+  <button type="submit" class="btn btn-success">Checkout</button>
+</form>
+
+{% endblock %}

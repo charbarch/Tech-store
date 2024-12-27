@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Total Revenue</h1>
+<table class="table table-success">
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Total Revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for revenue in revenue_data %}
+    <tr>
+      <td>{{ revenue.product_name }}</td>
+      <td>${{ revenue.total_revenue }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h3>Total Revenue: ${{ total_revenue }}</h3>
+{% endblock %}

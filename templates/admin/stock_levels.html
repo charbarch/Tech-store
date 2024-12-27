@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Stock Levels</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Product ID</th>
+      <th>Product Name</th>
+      <th>Category</th>
+      <th>Stock Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stock in stock_data %}
+    <tr>
+      <td>{{ stock.product_id }}</td>
+      <td>{{ stock.product_name }}</td>
+      <td>{{ stock.category_name }}</td>
+      <td>{{ stock.quantity }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

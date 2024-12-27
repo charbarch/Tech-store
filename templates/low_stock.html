@@ -1,0 +1,30 @@
+<!-- templates/low_stock.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Low Stock Report</h1>
+
+{% if products %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Reorder Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in products %}
+      <tr>
+        <td>{{ item.product_id }}</td>
+        <td>{{ item.product_name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.reorder_level }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No items are below reorder level.</p>
+{% endif %}
+{% endblock %}

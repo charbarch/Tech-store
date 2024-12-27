@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Order History</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Item Price</th>
+      <th>Total Price</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders %}
+      {% for product in order.products %}
+      <tr>
+        {% if loop.first %}
+        <td rowspan="{{ order.products|length }}">{{ order.order_id }}</td>
+        {% endif %}
+        <td>{{ product.product_name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>${{ '%.2f'|format(product.item_total_price) }}</td>
+        {% if loop.first %}
+        <td rowspan="{{ order.products|length }}"><strong>${{ '%.2f'|format(order.total_price) }}</strong></td>
+        <td rowspan="{{ order.products|length }}">{{ order.date }}</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
